@@ -14,7 +14,7 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push('/register')
+    router.push('/dashboard')
   }
 
   return (
@@ -59,7 +59,7 @@ export default function Home() {
                   Sign In <ArrowRight size={16} className="font-bold" />
                 </button>
               </form>
-              <p className="text-[#0066FF] text-sm mt-6 text-center">New here? Register your company</p>
+              <p onClick={() => router.push('/register')} className="text-[#0066FF] text-sm mt-6 text-center">New here? Register your company</p>
               <p className="text-[#8897AD] text-[12px] mt-4 text-center">Secure login Powered by BMC</p>
             </div>
           </div>
@@ -78,7 +78,8 @@ export default function Home() {
                 : 'translate-x-20 translate-y-10 opacity-0'
               }
         `}
-          />        </div>
+          />
+        </div>
       </div>
     </>
   );
