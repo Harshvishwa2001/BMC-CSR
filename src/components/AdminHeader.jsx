@@ -1,10 +1,14 @@
 import { BellDot, ChevronLeft, Search } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 export default function AdminHeader() {
+    const router =useRouter();
     return (
         <div>
             <header className='flex justify-between items-center px-8 py-4 bg-white border-b border-slate-200 sticky top-0 z-40 h-20'>
-                <div className='bg-[#F9FAFB] flex items-center justify-center text-[16px] border border-[#E5E7EB] text-[#7B7B7B] py-2 px-2.5 rounded-full gap-2'>
+                <div
+                onClick={()=> router.push('/dashboard')}
+                 className='bg-[#F9FAFB] flex items-center justify-center text-[16px] border border-[#E5E7EB] text-[#7B7B7B] py-2 px-2.5 rounded-full gap-2 cursor-pointer'>
                     <ChevronLeft size={20} />Go Back
                 </div>
 
@@ -17,7 +21,7 @@ export default function AdminHeader() {
                         </button>
                         <button className='p-1 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-xl transition-all relative'>
                             <BellDot size={20} />
-                            <span className='absolute top-3 right-3 w-2 h-2 bg-red-500 rounded-full border-2 border-white'></span>
+                            <span className='absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white'></span>
                         </button>
                     </div>
 

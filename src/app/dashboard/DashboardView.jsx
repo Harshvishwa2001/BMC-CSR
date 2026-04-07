@@ -1,7 +1,10 @@
 import Card from '@/components/Card';
 import { BellDot, Calendar, Clock, Eye, File, FileText, Search } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function DashboardView() {
+    const router = useRouter();
+
     const applications = [
         { name: "Education Infrastructure Development", status: "Under Review", date: "28 Mar 2026", color: "bg-[#FEF9C2] text-[#A65F00] border-yellow-100" },
         { name: "Healthcare Initiative - Rural Areas", status: "Shortlisted", date: "25 Mar 2026", color: "bg-[#DCFCE7] text-[#008236] border-green-100" },
@@ -63,7 +66,7 @@ export default function DashboardView() {
                     </div>
                 </div>
             </header>
-            
+
             <div className="p-8 space-y-10">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
@@ -86,7 +89,9 @@ export default function DashboardView() {
                                 </thead>
                                 <tbody className="divide-y divide-slate-200">
                                     {applications.map((app, idx) => (
-                                        <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
+                                        <tr
+                                            onClick={() => router.push('/dashboard/review')}
+                                            key={idx} className="hover:bg-slate-50/50 transition-colors cursor-pointer">
                                             <td className="px-6 py-4 text-sm  text-[#111827]">{app.name}</td>
                                             <td className="px-6 py-2">
                                                 <span className={`px-3 py-1 rounded-full text-[11px] font-medium border ${app.color}`}>

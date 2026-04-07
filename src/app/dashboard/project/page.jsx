@@ -15,7 +15,7 @@ export default function CSRProject() {
                 <header className='flex justify-between items-center px-8 py-4 bg-white border-b border-slate-200 sticky top-0 z-40 h-20'>
 
                     {/* Left Section: Welcome Message */}
-                    <div className='bg-[#F9FAFB] flex items-center justify-center text-[16px] border border-[#E5E7EB] text-[#7B7B7B] py-2 px-2.5 rounded-full gap-2'>
+                    <div onClick={()=> router.push('/dashboard') } className='bg-[#F9FAFB] flex items-center justify-center text-[16px] border border-[#E5E7EB] text-[#7B7B7B] py-2 px-2.5 rounded-full gap-2 cursor-pointer'>
                         <ChevronLeft size={20} />Go Back
                     </div>
 
