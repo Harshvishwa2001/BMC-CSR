@@ -37,10 +37,10 @@ export default function DashboardView() {
                 <div className='flex items-center gap-6'>
                     {/* Search & Notifications */}
                     <div className='flex items-center border-r border-slate-200 '>
-                        <button className='p-2 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-full transition-all'>
+                        <button className='p-2 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-full transition-all cursor-pointer'>
                             <Search size={20} />
                         </button>
-                        <button className='p-2 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-full transition-all relative'>
+                        <button className='p-2 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-full transition-all relative cursor-pointer'>
                             <BellDot size={20} />
                             <span className='absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white'></span>
                         </button>
@@ -99,7 +99,7 @@ export default function DashboardView() {
                                             </td>
                                             <td className="px-6 py-5 text-sm text-[#6B7280]">{app.date}</td>
                                             <td className="px-6 py-5">
-                                                <button className="flex items-center gap-1 mx-auto text-[#1D4ED8] text-sm  hover:text-blue-700">
+                                                <button className="flex items-center gap-1 mx-auto text-[#1D4ED8] text-sm  hover:text-blue-700 cursor-pointer">
                                                     <Eye size={16} /> View
                                                 </button>
                                             </td>

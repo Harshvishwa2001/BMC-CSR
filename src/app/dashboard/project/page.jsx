@@ -7,8 +7,8 @@ export default function CSRProject() {
     const router = useRouter();
 
     return (
-        <div className="flex h-screen overflow-hidden bg-[#F9FAFB]">
-            <Sidebar />
+        <div className="h-screen overflow-hidden bg-[#F9FAFB]">
+            <Sidebar>
 
             <main className="flex-1 flex flex-col h-full overflow-hidden transition-all duration-300">
                 {/* Header */}
@@ -95,7 +95,7 @@ export default function CSRProject() {
                                 {/* Primary Action Button */}
                                 <button
                                 onClick={()=> router.push('/dashboard/project/apply')}
-                                className="w-full bg-[#1D4ED8] hover:bg-blue-700 text-white py-3 rounded-xl font-semibold text-[16px] transition-all shadow-lg shadow-blue-100 active:scale-[0.98]">
+                                className="w-full bg-[#1D4ED8] hover:bg-blue-700 text-white py-3 rounded-xl font-semibold text-[16px] transition-all shadow-lg shadow-blue-100 active:scale-[0.98] cursor-pointer">
                                     Apply for this Project
                                 </button>
                             </div>
@@ -226,12 +226,13 @@ export default function CSRProject() {
                                 <h1 className='text-[18px] text-[#111827] font-semibold'>Ready to make an impact?</h1>
                                 <p className='text-[#6B7280] text-sm'>Apply before 30 May 2026</p>
                             </div>
-                            <button onClick={() => router.push('/dashboard/project/apply')} className='text-white bg-[#1D4ED8] py-2.5 px-7 text-[16px] font-semibold rounded-[10px]'>Apply Now</button>
+                            <button onClick={() => router.push('/dashboard/project/apply')} className='text-white bg-[#1D4ED8] py-2.5 px-7 text-[16px] font-semibold rounded-[10px] cursor-pointer'>Apply Now</button>
                         </div>
 
                     </div>
                 </div>
             </main>
+            </Sidebar>
         </div>
     )
 }

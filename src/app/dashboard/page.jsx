@@ -1,13 +1,11 @@
 'use client'
 import { useState } from 'react';
 import { FileCheckIcon, FileText, FolderKanban, LayoutDashboard, Bell, Search } from 'lucide-react';
-import DashboardView from './DashboardView';
+import DashboardView from '../../components/DashboardView';
 import Sidebar from '@/components/Sidebar';
-
-// Placeholder views for a clean build
-const ProjectsView = () => <div className="p-8 text-2xl font-bold text-gray-800">All CSR Projects Content</div>;
-const ApplicationsView = () => <div className="p-8 text-2xl font-bold text-gray-800">Applications Content</div>;
-const AgreementsView = () => <div className="p-8 text-2xl font-bold text-gray-800">Agreements Content</div>;
+import ProjectsView from '@/components/ProjectsView';
+import ApplicationsView from '@/components/ApplicationsView';
+import AgreementsView from '@/components/AgreementsView';
 
 export default function Page() {
     const [activeTab, setActiveTab] = useState('Dashboard');
@@ -30,15 +28,16 @@ export default function Page() {
     };
 
     return (
-        <div className="flex h-screen overflow-hidden bg-[#F5F7FA]">
+        <div className="h-screen bg-[#F5F7FA]">
             {/* 1. SIDEBAR - Passed state as props to sync with content */}
-            <Sidebar />
+            <Sidebar>
 
-            <div className="flex-1 overflow-y-auto custom-scrollbar">
-                <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
-                    {renderContent()}
+                <div className="flex-1 overflow-y-auto custom-scrollbar">
+                    <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
+                        {renderContent()}
+                    </div>
                 </div>
-            </div>
+            </Sidebar>
         </div>
     );
 }

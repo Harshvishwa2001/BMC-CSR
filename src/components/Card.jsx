@@ -56,7 +56,7 @@ export default function Card({ tags = [], name, location, money, date }) {
             </div>
 
             {/* Hover Apply Button (Optional) */}
-            <button onClick={()=> router.push('/dashboard/project')} className='w-full mt-4 py-2 bg-[#1D4ED8] text-white rounded-xl text-[16px] font-medium'>
+            <button onClick={()=> router.push('/dashboard/project')} className='w-full mt-4 py-2 bg-[#1D4ED8] text-white rounded-xl text-[16px] font-medium cursor-pointer'>
                 View Details
             </button>
         </div>

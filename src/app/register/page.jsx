@@ -128,6 +128,7 @@ export default function Page() {
             className="hidden"
             accept=".pdf,.doc,.docx,.jpg,.png"
             onChange={(e) => handleFileUpload(e, fileKey)}
+            required ={required}
           />
 
           <label

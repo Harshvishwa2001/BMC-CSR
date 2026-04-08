@@ -1,32 +1,34 @@
-'use client'
-import { BellDot, ChevronLeft, Search } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import { BellDot, Search } from 'lucide-react'
+import React from 'react'
 
-export default function AdminHeader() {
-    const router = useRouter();
+export default function DashboardHeader() {
     return (
         <div>
-            <header className='flex justify-between items-center px-8 py-4 bg-white border-b border-slate-200 sticky top-0 z-40 h-20'>
-                <div
-                    onClick={() => router.push('/dashboard')}
-                    className='bg-[#F9FAFB] flex items-center justify-center text-[16px] border border-[#E5E7EB] text-[#7B7B7B] py-2 px-2.5 rounded-full gap-2 cursor-pointer'>
-                    <ChevronLeft size={20} />Go Back
+            <header className='flex justify-between h-28 items-center px-8 py-4 bg-white border-b border-slate-200 sticky top-0 z-40'>
+                {/* Left Section: Welcome Message */}
+                <div className='max-w-2xl'>
+                    <h1 className='font-bold text-2xl text-[#111827] tracking-tight'>
+                        Welcome back, TechCorp Solutions Pvt Ltd
+                    </h1>
+                    <p className='text-[#6B7280] text-sm mt-1'>
+                        Discover CSR opportunities and apply to projects that match your impact goals
+                    </p>
                 </div>
 
                 {/* Right Section: Actions & Profile */}
-                <div className='flex items-center gap-4 md:gap-6'>
+                <div className='flex items-center gap-6'>
                     {/* Search & Notifications */}
-                    <div className='flex items-center gap-1 border-r border-slate-200 pr-2 md:pr-2'>
-                        <button className='p-1 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-xl transition-all'>
+                    <div className='flex items-center border-r border-slate-200 '>
+                        <button className='p-2 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-full transition-all'>
                             <Search size={20} />
                         </button>
-                        <button className='p-1 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-xl transition-all relative'>
+                        <button className='p-2 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-full transition-all relative'>
                             <BellDot size={20} />
-                            <span className='absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white'></span>
+                            <span className='absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white'></span>
                         </button>
                     </div>
 
-                    {/* Profile Section */}
+                    {/* Profile Dropdown */}
                     <div className='flex items-center gap-2 cursor-pointer group/profile'>
                         <div className='relative'>
                             <div className='w-10 h-10 bg-[#1D4ED8] rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-blue-100 border-2 border-white'>

@@ -56,165 +56,169 @@ export default function Page() {
     const [isopen, setOpen] = useState(false);
 
     return (
-        <div className="flex h-screen overflow-hidden bg-[#f5f7fa]">
-            <AdminSidebar />
+        <>
+            <AdminSidebar>
+                <div className="flex flex-col h-screen overflow-hidden bg-[#f5f7fa]">
+                    <main className="flex flex-col h-full transition-all duration-300">
+                        <AdminHead />
 
-            <main className="flex-1 flex flex-col h-full transition-all duration-300">
-                <AdminHead />
+                        <div className="overflow-y-auto p-10 space-y-10">
 
-                <div className="flex-1 overflow-y-auto p-10 space-y-10">
+                            {/* Stats Grid */}
+                            <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                                {stats.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className='p-8 bg-white border border-gray-100 rounded-[14px] shadow-sm hover:shadow-md transition-shadow'
+                                    >
+                                        <div className='flex justify-between items-center mb-4'>
+                                            <p className='text-[#6B7280] text-sm font-medium'>{item.label}</p>
+                                            <item.icon className='text-[#6B7280]' size={20} />
+                                        </div>
+                                        <p className='text-[#111827] text-[30px] font-bold leading-none'>{item.value}</p>
+                                    </div>
+                                ))}
+                            </section>
 
-                    {/* Stats Grid */}
-                    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-                        {stats.map((item, index) => (
-                            <div
-                                key={index}
-                                className='p-8 bg-white border border-gray-100 rounded-[14px] shadow-sm hover:shadow-md transition-shadow'
-                            >
-                                <div className='flex justify-between items-center mb-4'>
-                                    <p className='text-[#6B7280] text-sm font-medium'>{item.label}</p>
-                                    <item.icon className='text-[#6B7280]' size={20} />
+                            {/* Quick Actions */}
+                            <section className='space-y-5'>
+                                <h1 className='text-xl font-bold text-[#111827]'>Quick Actions</h1>
+                                <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
+                                    {quickActions.map((action, idx) => (
+                                        <div
+                                            key={idx}
+                                            onClick={() => {
+                                                if (action.title === "Create New Project") {
+                                                    setOpen(true);
+                                                }
+                                            }}
+                                            className={`cursor-pointer px-6 py-10 rounded-[14px] space-y-6 transition-all hover:scale-[1.01] ${action.primary
+                                                ? 'bg-[#1D4ED8] text-white shadow-lg shadow-blue-100'
+                                                : 'bg-white border border-slate-200 text-black'
+                                                }`}
+                                        >
+                                            <action.icon size={32} className={action.primary ? 'text-white' : 'text-[#1D4ED8]'} />
+                                            <div>
+                                                <p className='text-[18px] font-semibold'>{action.title}</p>
+                                                <p className={`text-sm mt-1 ${action.primary ? 'text-blue-50' : 'text-gray-500'}`}>
+                                                    {action.desc}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                                <p className='text-[#111827] text-[30px] font-bold leading-none'>{item.value}</p>
-                            </div>
-                        ))}
-                    </section>
+                            </section>
 
-                    {/* Quick Actions */}
-                    <section className='space-y-5'>
-                        <h1 className='text-xl font-bold text-[#111827]'>Quick Actions</h1>
-                        <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
-                            {quickActions.map((action, idx) => (
-                                <div
-                                    key={idx}
-                                    onClick={() => {
-                                        if (action.title === "Create New Project") {
-                                            setOpen(true);
-                                        }
-                                    }}
-                                    className={`cursor-pointer px-6 py-10 rounded-[14px] space-y-6 transition-all hover:scale-[1.01] ${action.primary
-                                        ? 'bg-[#1D4ED8] text-white shadow-lg shadow-blue-100'
-                                        : 'bg-white border border-slate-200 text-black'
-                                        }`}
-                                >
-                                    <action.icon size={32} className={action.primary ? 'text-white' : 'text-[#1D4ED8]'} />
-                                    <div>
-                                        <p className='text-[18px] font-semibold'>{action.title}</p>
-                                        <p className={`text-sm mt-1 ${action.primary ? 'text-blue-50' : 'text-gray-500'}`}>
-                                            {action.desc}
-                                        </p>
+                            {/* Charts Section */}
+                            <section className='grid grid-cols-1 lg:grid-cols-3 gap-8 pb-10'>
+                                {/* Bar Chart - Takes up 2/3 of the space */}
+                                <div className="lg:col-span-2">
+                                    <GraphsChart />
+                                </div>
+
+                                {/* Pie Chart - Takes up 1/3 of the space */}
+                                <div className="lg:col-span-1 flex justify-center">
+                                    <PieCharts />
+                                </div>
+                            </section>
+
+                            <section>
+                                <div className="lg:col-span-2 bg-white border border-slate-200 overflow-hidden rounded-2xl shadow-sm">
+                                    <div className="flex justify-between items-center border-b border-slate-50 px-4 py-6">
+                                        <h2 className="font-bold text-[20px] text-slate-800">Recent Projects</h2>
+                                        <button className="text-slate-400 text-sm hover:underline px-4">View All &gt;</button>
+                                    </div>
+                                    {/* Container handles the rounding and the outer border */}
+                                    <div className="w-full overflow-hidden border border-slate-200 ">
+                                        <table className="w-full text-left bg-white">
+                                            <thead>
+                                                <tr className="bg-[#F9FAFB] text-[#6B7280] text-[12px] uppercase tracking-wider border-b border-slate-200">
+
+                                                    <th className="px-6 py-4 font-medium">Project Name</th>
+                                                    <th className="px-6 py-4 font-medium">Status</th>
+                                                    <th className="px-6 py-4 font-medium">Application</th>
+                                                    <th className="px-6 py-4 font-medium">Submitted Date</th>
+                                                    <th className="px-6 py-4 font-medium text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-slate-200">
+                                                {Project.map((app, idx) => (
+                                                    <tr key={idx} className="hover:bg-slate-50/50 transition-colors cursor-pointer">
+                                                        <td className="px-6 py-4 text-sm  text-[#111827]">{app.name}</td>
+                                                        <td className="px-6 py-2">
+                                                            <span className={`px-4 py-1 rounded-full text-[12px] font-medium  ${app.color}`}>
+                                                                {app.status}
+                                                            </span>
+                                                        </td>
+                                                        <td className="px-6 py-5 text-sm text-[#6B7280]">{app.application}</td>
+                                                        <td className="px-6 py-5 text-sm text-[#6B7280]">{app.date}</td>
+                                                        <td className="px-6 py-5">
+                                                            <button className="flex items-center gap-1 mx-auto text-[#1D4ED8] text-sm  hover:text-blue-700">
+                                                                <Eye size={16} /> View
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                            ))}
+                            </section>
+
+                            <section>
+                                <div className="lg:col-span-2 bg-white border border-slate-200 overflow-hidden rounded-2xl shadow-sm">
+                                    <div className="flex justify-between items-center border-b border-slate-50 px-4 py-6">
+                                        <h2 className="font-bold text-[20px] text-slate-800">Recent Applications</h2>
+                                        <button className="text-slate-400 text-sm hover:underline px-4">View All &gt;</button>
+                                    </div>
+                                    {/* Container handles the rounding and the outer border */}
+                                    <div className="w-full overflow-hidden border border-slate-200 ">
+                                        <table className="w-full text-left bg-white">
+                                            <thead>
+                                                <tr className="bg-[#F9FAFB] text-[#6B7280] text-[12px] uppercase tracking-wider border-b border-slate-200">
+                                                    <th className="px-6 py-4 font-medium">Company Name</th>
+                                                    <th className="px-6 py-4 font-medium">Project Name</th>
+                                                    <th className="px-6 py-4 font-medium">Status</th>
+                                                    <th className="px-6 py-4 font-medium">Submitted Date</th>
+                                                    <th className="px-6 py-4 font-medium text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-slate-200">
+                                                {applications.map((app, idx) => (
+                                                    <tr
+                                                        onClick={() => router.push('/admindashboard/viewapplication')}
+                                                        key={idx} className="hover:bg-slate-50/50 transition-colors cursor-pointer">
+                                                        <td className="px-6 py-4 text-sm  text-[#111827]">{app.compname}</td>
+                                                        <td className="px-6 py-4 text-sm  text-[#111827]">{app.name}</td>
+                                                        <td className="px-6 py-2">
+                                                            <span className={`px-4 py-1 rounded-full text-[12px] font-medium border ${app.color}`}>
+                                                                {app.status}
+                                                            </span>
+                                                        </td>
+                                                        <td className="px-6 py-5 text-sm text-[#6B7280]">{app.date}</td>
+                                                        <td className="px-6 py-5">
+                                                            <button
+                                                                onClick={() => router.push('/admindashboard/viewapplication')}
+                                                                className="flex items-center gap-1 mx-auto text-[#1D4ED8] text-sm  hover:text-blue-700 cursor-pointer">
+                                                                <Eye size={16} /> View
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <CreateCSRProject
+                                isOpen={isopen}
+                                onClose={() => setOpen(false)}
+                            />
                         </div>
-                    </section>
-
-                    {/* Charts Section */}
-                    <section className='grid grid-cols-1 lg:grid-cols-3 gap-8 pb-10'>
-                        {/* Bar Chart - Takes up 2/3 of the space */}
-                        <div className="lg:col-span-2">
-                            <GraphsChart />
-                        </div>
-
-                        {/* Pie Chart - Takes up 1/3 of the space */}
-                        <div className="lg:col-span-1 flex justify-center">
-                            <PieCharts />
-                        </div>
-                    </section>
-
-                    <section>
-                        <div className="lg:col-span-2 bg-white border border-slate-200 overflow-hidden rounded-2xl shadow-sm">
-                            <div className="flex justify-between items-center border-b border-slate-50 px-4 py-6">
-                                <h2 className="font-bold text-[20px] text-slate-800">Recent Projects</h2>
-                                <button className="text-slate-400 text-sm hover:underline px-4">View All &gt;</button>
-                            </div>
-                            {/* Container handles the rounding and the outer border */}
-                            <div className="w-full overflow-hidden border border-slate-200 ">
-                                <table className="w-full text-left bg-white">
-                                    <thead>
-                                        <tr className="bg-[#F9FAFB] text-[#6B7280] text-[12px] uppercase tracking-wider border-b border-slate-200">
-
-                                            <th className="px-6 py-4 font-medium">Project Name</th>
-                                            <th className="px-6 py-4 font-medium">Status</th>
-                                            <th className="px-6 py-4 font-medium">Application</th>
-                                            <th className="px-6 py-4 font-medium">Submitted Date</th>
-                                            <th className="px-6 py-4 font-medium text-center">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-slate-200">
-                                        {Project.map((app, idx) => (
-                                            <tr key={idx} className="hover:bg-slate-50/50 transition-colors cursor-pointer">
-                                                <td className="px-6 py-4 text-sm  text-[#111827]">{app.name}</td>
-                                                <td className="px-6 py-2">
-                                                    <span className={`px-4 py-1 rounded-full text-[12px] font-medium  ${app.color}`}>
-                                                        {app.status}
-                                                    </span>
-                                                </td>
-                                                <td className="px-6 py-5 text-sm text-[#6B7280]">{app.application}</td>
-                                                <td className="px-6 py-5 text-sm text-[#6B7280]">{app.date}</td>
-                                                <td className="px-6 py-5">
-                                                    <button className="flex items-center gap-1 mx-auto text-[#1D4ED8] text-sm  hover:text-blue-700">
-                                                        <Eye size={16} /> View
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section>
-                        <div className="lg:col-span-2 bg-white border border-slate-200 overflow-hidden rounded-2xl shadow-sm">
-                            <div className="flex justify-between items-center border-b border-slate-50 px-4 py-6">
-                                <h2 className="font-bold text-[20px] text-slate-800">Recent Applications</h2>
-                                <button className="text-slate-400 text-sm hover:underline px-4">View All &gt;</button>
-                            </div>
-                            {/* Container handles the rounding and the outer border */}
-                            <div className="w-full overflow-hidden border border-slate-200 ">
-                                <table className="w-full text-left bg-white">
-                                    <thead>
-                                        <tr className="bg-[#F9FAFB] text-[#6B7280] text-[12px] uppercase tracking-wider border-b border-slate-200">
-                                            <th className="px-6 py-4 font-medium">Company Name</th>
-                                            <th className="px-6 py-4 font-medium">Project Name</th>
-                                            <th className="px-6 py-4 font-medium">Status</th>
-                                            <th className="px-6 py-4 font-medium">Submitted Date</th>
-                                            <th className="px-6 py-4 font-medium text-center">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-slate-200">
-                                        {applications.map((app, idx) => (
-                                            <tr
-                                                onClick={() => router.push('/admindashboard/viewapplication')}
-                                                key={idx} className="hover:bg-slate-50/50 transition-colors cursor-pointer">
-                                                <td className="px-6 py-4 text-sm  text-[#111827]">{app.compname}</td>
-                                                <td className="px-6 py-4 text-sm  text-[#111827]">{app.name}</td>
-                                                <td className="px-6 py-2">
-                                                    <span className={`px-4 py-1 rounded-full text-[12px] font-medium border ${app.color}`}>
-                                                        {app.status}
-                                                    </span>
-                                                </td>
-                                                <td className="px-6 py-5 text-sm text-[#6B7280]">{app.date}</td>
-                                                <td className="px-6 py-5">
-                                                    <button className="flex items-center gap-1 mx-auto text-[#1D4ED8] text-sm  hover:text-blue-700">
-                                                        <Eye size={16} /> View
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-
-                    <CreateCSRProject
-                        isOpen={isopen}
-                        onClose={() => setOpen(false)}
-                    />
-                </div>
-            </main>
-        </div>
+                    </main>
+                </div >
+            </AdminSidebar>
+        </>
     );
 }

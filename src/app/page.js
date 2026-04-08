@@ -39,7 +39,7 @@ export default function Home() {
                   <input
                     type="email"
                     className="w-full h-12 text-sm px-4 py-2 bg-[#F7FBFF] border border-slate-200 text-slate-600 rounded-md outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-[#8897AD]"
-                    placeholder="your@company.com"
+                    placeholder="your@company.com" required
                   />
                 </div>
 
@@ -49,7 +49,7 @@ export default function Home() {
                   <input
                     type="password"
                     className="w-full h-12 text-sm px-4 py-2 bg-[#F7FBFF] border border-slate-200 text-slate-600 rounded-md outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-[#8897AD]"
-                    placeholder="Enter your password"
+                    placeholder="Enter your password" required
                   />
                   <p className="text-right text-sm py-2 text-[#8897AD]">Forgot Password?</p>
                 </div>

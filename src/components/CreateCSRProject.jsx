@@ -148,10 +148,10 @@ export default function CreateCSRProject({ isOpen, onClose }) {
                                             <input type="text" className="w-full text-sm px-4 py-3 bg-[#F7FBFF] border border-transparent rounded-lg outline-none focus:bg-white focus:border-slate-400 focus:ring-4 focus:ring-blue-50/50 transition-all placeholder:text-slate-400" placeholder="Enter project location" required />
                                         </div>
                                         <div className="flex justify-end pt-2 gap-2">
-                                            <button type="submit" className="flex items-center justify-center gap-2 px-5 py-2 text-sm bg-[#6B7280] text-white font-semibold rounded-lg hover:bg-[#6b7280c5] active:scale-95 transition-all">
+                                            <button type="submit" className="flex items-center justify-center gap-2 px-5 py-2 text-sm bg-[#6B7280] text-white font-semibold rounded-lg hover:bg-[#6b7280c5] active:scale-95 transition-all cursor-pointer">
                                                 Save as draft
                                             </button>
-                                            <button type="submit" className="flex items-center justify-center gap-2 px-5 py-2 text-sm bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 active:scale-95 transition-all">
+                                            <button type="submit" className="flex items-center justify-center gap-2 px-5 py-2 text-sm bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 active:scale-95 transition-all cursor-pointer">
                                                 Next <ArrowRight size={18} />
                                             </button>
                                         </div>
@@ -185,14 +185,14 @@ export default function CreateCSRProject({ isOpen, onClose }) {
                                             </div>
                                         </div>
                                         <div className="flex justify-between items-center pt-4">
-                                            <button type="button" onClick={handleBack} className="flex items-center gap-2 px-4 py-2 text-slate-900 transition-colors text-sm border rounded-lg">
+                                            <button type="button" onClick={handleBack} className="flex items-center gap-2 px-4 py-2 text-slate-900 transition-colors text-sm border rounded-lg cursor-pointer">
                                                 <ArrowLeft size={18} /> Previous
                                             </button>
                                             <div className='flex items-center justify-center gap-4'>
-                                                <button type="submit" className="flex items-center justify-center gap-2 px-5 py-2 text-sm bg-[#6B7280] text-white font-semibold rounded-lg hover:bg-[#6b7280c5] active:scale-95 transition-all">
+                                                <button type="submit" className="flex items-center justify-center gap-2 px-5 py-2 text-sm bg-[#6B7280] text-white font-semibold rounded-lg hover:bg-[#6b7280c5] active:scale-95 transition-all cursor-pointer">
                                                     Save as draft
                                                 </button>
-                                                <button type="submit" className="flex items-center gap-2 px-5 py-2 bg-blue-600 text-white font-semibold text-sm rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-100">
+                                                <button type="submit" className="flex items-center gap-2 px-5 py-2 bg-blue-600 text-white font-semibold text-sm rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-100 cursor-pointer">
                                                     Next <ArrowRight size={18} />
                                                 </button>
                                             </div>
@@ -255,7 +255,7 @@ export default function CreateCSRProject({ isOpen, onClose }) {
                                             {/* Add More Button Styled to match your image */}
                                             <button
                                                 onClick={addDoc}
-                                                className="flex items-center gap-2 w-fit px-4 py-2 mt-2 bg-[#F0F7FF] border border-blue-500 text-blue-600 rounded-xl text-[14px] font-semibold hover:bg-blue-100 transition-all active:scale-95"
+                                                className="flex items-center gap-2 w-fit px-4 py-2 mt-2 bg-[#F0F7FF] border border-blue-500 text-blue-600 rounded-xl text-[14px] font-semibold hover:bg-blue-100 transition-all active:scale-95 cursor-pointer"
                                             >
                                                 Add more <Plus size={18} />
                                             </button>
@@ -263,14 +263,14 @@ export default function CreateCSRProject({ isOpen, onClose }) {
                                     </div>
 
                                     <div className="flex justify-between items-center pt-4">
-                                        <button type="button" onClick={handleBack} className="flex items-center gap-2 px-4 py-2 text-slate-900 transition-colors text-sm border rounded-lg">
+                                        <button type="button" onClick={handleBack} className="flex items-center gap-2 px-4 py-2 text-slate-900 transition-colors text-sm border rounded-lg cursor-pointer">
                                             <ArrowLeft size={18} /> Previous
                                         </button>
                                         <div className='flex items-center justify-center gap-4'>
-                                            <button type="submit" className="flex items-center justify-center gap-2 px-5 py-2 text-sm bg-[#6B7280] text-white font-semibold rounded-lg hover:bg-[#6b7280c5] active:scale-95 transition-all">
+                                            <button type="submit" className="flex items-center justify-center gap-2 px-5 py-2 text-sm bg-[#6B7280] text-white font-semibold rounded-lg hover:bg-[#6b7280c5] active:scale-95 transition-all cursor-pointer">
                                                 Save as draft
                                             </button>
-                                            <button type="submit" className="flex items-center gap-2 px-5 py-2 bg-blue-600 text-white font-semibold text-sm rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-100">
+                                            <button type="submit" className="flex items-center gap-2 px-5 py-2 bg-blue-600 text-white font-semibold text-sm rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-100 cursor-pointer">
                                                 Next <ArrowRight size={18} />
                                             </button>
                                         </div>
@@ -310,7 +310,7 @@ export default function CreateCSRProject({ isOpen, onClose }) {
                                     <div className='border border-[#E5E7EB] rounded-xl px-6 py-4'>
                                         <div className='flex justify-between items-center py-2'>
                                             <h1 className='font-semibold text-[18px] text[#111827]'>Budget & Timeline</h1>
-                                            <button onClick={() => setStep(2)} className='text-sm text-[#1D4ED8] flex gap-2'> <Pen size={16} /> Edit</button>
+                                            <button onClick={() => setStep(2)} className='text-sm text-[#1D4ED8] flex gap-2 cursor-pointer'> <Pen size={16} /> Edit</button>
                                         </div>
                                         <div className='space-y-4'>
                                             <div className='space-y-2'>
@@ -333,7 +333,7 @@ export default function CreateCSRProject({ isOpen, onClose }) {
                                     <div className='border border-[#E5E7EB] rounded-xl px-6 py-4'>
                                         <div className='flex justify-between items-center py-2'>
                                             <h1 className='font-semibold text-[18px] text[#111827]'>Eligibility</h1>
-                                            <button onClick={() => setStep(3)} className='text-sm text-[#1D4ED8] flex gap-2'> <Pen size={16} /> Edit</button>
+                                            <button onClick={() => setStep(3)} className='text-sm text-[#1D4ED8] flex gap-2 cursor-pointer'> <Pen size={16} /> Edit</button>
                                         </div>
                                         <div className='space-y-2 mt-2 grid grid-cols-3 gap-4'>
                                             <div className='space-y-2'>
@@ -359,16 +359,16 @@ export default function CreateCSRProject({ isOpen, onClose }) {
 
 
                                     <div className="flex justify-between items-center pt-4">
-                                        <button type="button" onClick={handleBack} className="flex items-center gap-2 px-4 py-2 text-slate-900 transition-colors text-sm border rounded-lg">
+                                        <button type="button" onClick={handleBack} className="flex items-center gap-2 px-4 py-2 text-slate-900 transition-colors text-sm border rounded-lg cursor-pointer">
                                             <ArrowLeft size={18} /> Previous
                                         </button>
                                         <div className='flex items-center justify-center gap-4'>
-                                            <button type="submit" className="flex items-center justify-center gap-2 px-5 py-2 text-sm bg-[#6B7280] text-white font-semibold rounded-lg hover:bg-[#6b7280c5] active:scale-95 transition-all">
+                                            <button type="submit" className="flex items-center justify-center gap-2 px-5 py-2 text-sm bg-[#6B7280] text-white font-semibold rounded-lg hover:bg-[#6b7280c5] active:scale-95 transition-all cursor-pointer">
                                                 Save as draft
                                             </button>
                                             <button
                                                 onClick={() => router.push('/admindashboard/sucess')}
-                                                type="submit" className="flex items-center gap-2 px-5 py-2 bg-blue-600 text-white font-semibold text-sm rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-100">
+                                                type="submit" className="flex items-center gap-2 px-5 py-2 bg-blue-600 text-white font-semibold text-sm rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-100 cursor-pointer">
                                                 Submit
                                             </button>
                                         </div>
