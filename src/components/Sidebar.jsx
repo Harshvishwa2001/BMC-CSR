@@ -2,9 +2,11 @@
 import { FileCheckIcon, FileText, FolderKanban, HeadphonesIcon, LayoutDashboard } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function Sidebar({ children }) {
+    const router = useRouter();
     const [activeTab, setActiveTab] = useState('Dashboard');
 
     const menuItems = [
@@ -13,8 +15,6 @@ export default function Sidebar({ children }) {
         { icon: <FileText size={20} />, label: 'Applications', link: '/applications' },
         { icon: <FileCheckIcon size={20} />, label: 'Agreements', link: '/agreements' },
     ];
-
-
 
     return (
         <div className="flex h-screen overflow-hidden bg-[#F9FAFB]">
@@ -60,12 +60,14 @@ export default function Sidebar({ children }) {
                     <div className="p-2 group-hover:p-4 mb-4">
                         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 group-hover:p-5 border border-white/10">
                             <div className="flex items-center gap-2 mb-2">
-                                <HeadphonesIcon size={20} className="text-blue-300" />
+                                <HeadphonesIcon size={20} className="text-blue-300 min-w-7.5" />
                                 <h4 className="font-semibold text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Need Help?</h4>
                             </div>
                             <div className="hidden group-hover:block transition-all">
                                 <p className="text-xs text-blue-100 mb-4 opacity-80 leading-relaxed">Contact support for technical issues.</p>
-                                <button className="w-full bg-[#F9F3DF] text-[#C2A01E] py-2 rounded-xl text-sm font-bold hover:bg-yellow-50 transition-colors">Contact Us &gt;</button>
+                                <button
+                                    onClick={() => router.push('/contactus')}
+                                    className="w-full bg-[#F9F3DF] text-[#C2A01E] py-2 rounded-xl text-sm font-bold hover:bg-yellow-50 transition-colors">Contact Us &gt;</button>
                             </div>
                         </div>
                     </div>

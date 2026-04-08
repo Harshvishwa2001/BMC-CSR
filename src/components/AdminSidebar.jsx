@@ -82,12 +82,14 @@ export default function AdminSidebar({children}) {
                     <div className="p-2 group-hover:p-4 mb-4 transition-all">
                         <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-3 group-hover:p-5 border border-white/10 overflow-hidden">
                             <div className="flex items-center gap-2 mb-2">
-                                <HeadphonesIcon size={20} className="text-blue-300 min-w-[20px]" />
+                                <HeadphonesIcon size={20} className="text-blue-300 min-w-7.5" />
                                 <h4 className="font-semibold text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Need Help?</h4>
                             </div>
                             <div className="hidden group-hover:block">
                                 <p className="text-[14px] text-blue-100 mb-4 opacity-80">Contact CSR Support for issues.</p>
-                                <button className="w-full bg-[#F9F3DF] text-[#C2A01E] py-2 rounded-2xl text-[16px] font-medium hover:bg-[#f7ebc4] transition-colors">Contact Us &gt;</button>
+                                <button
+                                onClick={()=> router.push('/contactus')}
+                                className="w-full bg-[#F9F3DF] text-[#C2A01E] py-2 rounded-2xl text-[16px] font-medium hover:bg-[#f7ebc4] transition-colors">Contact Us &gt;</button>
                             </div>
                         </div>
                     </div>
