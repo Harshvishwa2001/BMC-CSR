@@ -1,32 +1,20 @@
 'use client'
 import { FileCheckIcon, FileText, FolderKanban, HeadphonesIcon, LayoutDashboard } from 'lucide-react';
 import Image from 'next/image';
-import { useState } from 'react';
-import AgreementsView from './AgreementsView';
-import ApplicationsView from './ApplicationsView';
-import DashboardView from './DashboardView';
-import ProjectsView from './ProjectsView';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Sidebar({ children }) {
     const [activeTab, setActiveTab] = useState('Dashboard');
 
     const menuItems = [
-        { icon: <LayoutDashboard size={20} />, label: 'Dashboard',link:'/dashboard' },
-        { icon: <FolderKanban size={20} />, label: 'All CSR Projects',link:'/projectsview' },
-        { icon: <FileText size={20} />, label: 'Applications',link:'/applications' },
-        { icon: <FileCheckIcon size={20} />, label: 'Agreements',link:'/agreements' },
+        { icon: <LayoutDashboard size={20} />, label: 'Dashboard', link: '/dashboard' },
+        { icon: <FolderKanban size={20} />, label: 'All CSR Projects', link: '/projectsview' },
+        { icon: <FileText size={20} />, label: 'Applications', link: '/applications' },
+        { icon: <FileCheckIcon size={20} />, label: 'Agreements', link: '/agreements' },
     ];
 
-    const renderContent = () => {
-        switch (activeTab) {
-            case 'Dashboard': return <DashboardView />;
-            case 'All CSR Projects': return <ProjectsView />;
-            case 'Applications': return <ApplicationsView />;
-            case 'Agreements': return <AgreementsView />;
-            default: return <DashboardView />;
-        }
-    };
+
 
     return (
         <div className="flex h-screen overflow-hidden bg-[#F9FAFB]">
