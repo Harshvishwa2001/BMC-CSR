@@ -47,20 +47,19 @@ export default function DashboardView() {
                     </div>
 
                     {/* Profile Dropdown */}
-                    <div className='flex items-center gap-3 cursor-pointer group'>
+                    <div className='flex items-center gap-2 cursor-pointer group/profile'>
                         <div className='relative'>
-                            <div className='w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md shadow-blue-100'>
+                            <div className='w-10 h-10 bg-[#1D4ED8] rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-blue-100 border-2 border-white'>
                                 TS
                             </div>
-                            {/* Status Indicator */}
-                            <div className='absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full'></div>
                         </div>
-                        <div className='text-left hidden md:block'>
-                            <h2 className='text-sm font-semibold text-[#111827] group-hover:text-blue-600 transition-colors'>
-                                Aditya Kumar
+
+                        <div className='text-left hidden lg:block'>
+                            <h2 className='text-sm font-bold text-[#111827] group-hover/profile:text-blue-600 transition-colors'>
+                                TechCorp Solutions Pvt Ltd
                             </h2>
-                            <p className='text-[12px] text-[#6B7280] font-medium uppercase tracking-wider'>
-                                Company User
+                            <p className='text-[10px] text-[#6B7280] font-bold tracking-widest'>
+                                Company
                             </p>
                         </div>
                     </div>
