@@ -22,7 +22,7 @@ export default function DashboardView() {
     return (
         // Header
         <div>
-            <header className='flex justify-between h-30 items-center px-8 py-4 bg-white border-b border-slate-200 sticky top-0 z-40'>
+            <header className='flex justify-between h-28 items-center px-8 py-4 bg-white border-b border-slate-200 sticky top-0 z-40'>
                 {/* Left Section: Welcome Message */}
                 <div className='max-w-2xl'>
                     <h1 className='font-bold text-2xl text-[#111827] tracking-tight'>

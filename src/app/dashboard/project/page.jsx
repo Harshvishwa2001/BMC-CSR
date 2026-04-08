@@ -49,7 +49,6 @@ export default function CSRProject() {
                                     Company
                                 </p>
                             </div>
-                            <ChevronDown size={16} className='text-slate-400 group-hover/profile:text-blue-600 transition-all hidden md:block' />
                         </div>
                     </div>
                 </header>
