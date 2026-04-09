@@ -2,12 +2,12 @@
 import { FileCheckIcon, FileText, FolderKanban, HeadphonesIcon, LayoutDashboard } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation'; // Added usePathname
 import { useState } from 'react';
 
 export default function Sidebar({ children }) {
     const router = useRouter();
-    const [activeTab, setActiveTab] = useState('Dashboard');
+    const pathname = usePathname(); // Get the current URL path
 
     const menuItems = [
         { icon: <LayoutDashboard size={20} />, label: 'Dashboard', link: '/dashboard' },
@@ -31,7 +31,7 @@ export default function Sidebar({ children }) {
                             <div className="flex items-center justify-center min-w-10">
                                 <Image src={'/image/logo.png'} width={56} height={56} alt='logo' className="w-10 h-10 group-hover:w-14 group-hover:h-14 transition-all" />
                             </div>
-                            <span className="font-bold text-sm leading-tight text-[#FEF9C2] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                            <span className="font-bold text-[20px] leading-tight text-[#FEF9C2] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                                 BMC CSR <br /> Portal
                             </span>
                         </div>
@@ -43,7 +43,8 @@ export default function Sidebar({ children }) {
                             <Link
                                 key={index}
                                 href={item.link}
-                                className={`flex items-center gap-4 px-2 py-4 cursor-pointer transition-all mx-4 rounded-xl mb-1 ${activeTab === item.label
+                                // Updated logic: check if pathname matches the item link
+                                className={`flex items-center gap-4 px-2 py-4 cursor-pointer transition-all mx-4 rounded-xl mb-1 ${pathname === item.link
                                     ? 'bg-[#0066FF] text-white shadow-lg shadow-blue-500/30'
                                     : 'hover:bg-white/10 text-white/80 hover:text-white'
                                     }`}
@@ -74,9 +75,8 @@ export default function Sidebar({ children }) {
                 </div>
             </aside>
 
-            {/* Main Dynamic Area - This swaps the content */}
+            {/* Main Dynamic Area */}
             <main className="flex-1 flex flex-col overflow-hidden relative">
-                {/* {renderContent()} */}
                 {children}
             </main>
         </div>

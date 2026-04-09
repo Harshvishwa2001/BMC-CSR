@@ -4,6 +4,7 @@ import { Eye } from 'lucide-react'
 import Sidebar from '@/components/Sidebar';
 import AdminHeader from '@/components/AdminHeader';
 import { useRouter } from 'next/navigation';
+import DashboardHeader from '@/components/DashboardHeader';
 
 export default function page() {
     const router = useRouter()
@@ -17,7 +18,7 @@ export default function page() {
     return (
         <>
             <Sidebar>
-                <AdminHeader />
+                <DashboardHeader />
                 <div className="space-y-10 bg-[#F9FAFB] min-h-screen">
 
                     {/* Content area that scrolls independently */}

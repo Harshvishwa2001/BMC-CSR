@@ -1,40 +1,27 @@
 'use client'
 import { FileCheckIcon, FileText, FolderKanban, HeadphonesIcon, LayoutDashboard } from 'lucide-react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation'; // 1. Import usePathname
 import { useState } from 'react';
 
-export default function AdminSidebar({children}) {
+export default function AdminSidebar({ children }) {
     const router = useRouter();
-    const [activeTab, setActiveTab] = useState('Dashboard');
+    const pathname = usePathname(); // 2. Initialize pathname
 
     const menuItems = [
-        { icon: <LayoutDashboard size={20} />, label: 'Dashboard' , link:'/admindashboard'},
-        { icon: <FolderKanban size={20} />, label: 'All CSR Projects' , link:'/adminprojectcsr'}, // Label used here
-        { icon: <FileText size={20} />, label: 'Applications' , link:'/adminapplication'},
-        { icon: <FileCheckIcon size={20} />, label: 'Agreements' , link:'/adminagreement'},
+        { icon: <LayoutDashboard size={20} />, label: 'Dashboard', link: '/admindashboard' },
+        { icon: <FolderKanban size={20} />, label: 'All CSR Projects', link: '/adminprojectcsr' },
+        { icon: <FileText size={20} />, label: 'Applications', link: '/adminapplication' },
+        { icon: <FileCheckIcon size={20} />, label: 'Agreements', link: '/adminagreement' },
     ];
 
-    // 2. Updated to match labels exactly
-    const renderContent = () => {
-        switch (activeTab) {
-            case 'Dashboard': return <AdminDashboardView />;
-            case 'All CSR Projects': return <AdminProjectsView />; // Match the menuItems label
-            case 'Applications': return <AdminApplicationsView />;
-            case 'Agreements': return <AdminSidebarAgreementsView />;
-            default: return <DashboardView />;
-        }
-    };
-
     const handleNavigation = (item) => {
-        setActiveTab(item.label);
         if (item.link) {
             router.push(item.link);
         }
     };
 
     return (
-        // Added flex h-screen and overflow-hidden to handle the main page layout
         <div className="flex h-screen bg-[#f5f7fa] overflow-hidden">
             <aside className="w-18 hover:w-64 relative flex flex-col left-0 top-0 overflow-hidden group transition-all duration-300 z-50 shadow-xl">
                 <div className="absolute inset-0 z-0">
@@ -53,7 +40,7 @@ export default function AdminSidebar({children}) {
                                     alt='logo'
                                     className="transition-all duration-300 ease-in-out w-10 h-10 group-hover:w-14 group-hover:h-14" />
                             </div>
-                            <span className="font-bold text-sm leading-tight text-[#FEF9C2] opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                            <span className="font-bold text-[20px] leading-tight text-[#FEF9C2] opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                                 BMC CSR <br /> Portal
                             </span>
                         </div>
@@ -65,7 +52,8 @@ export default function AdminSidebar({children}) {
                             <div
                                 key={index}
                                 onClick={() => handleNavigation(item)}
-                                className={`flex items-center gap-4 px-2 py-4 cursor-pointer transition-all mx-4 rounded-xl mb-1 ${activeTab === item.label
+                                // 3. Updated logic: Check if current path matches item link
+                                className={`flex items-center gap-4 px-2 py-4 cursor-pointer transition-all mx-4 rounded-xl mb-1 ${pathname === item.link
                                     ? 'bg-[#0066FF] text-white shadow-lg shadow-blue-500/30'
                                     : 'hover:bg-blue-500/20 text-white/80 hover:text-white'
                                     }`}
@@ -88,17 +76,15 @@ export default function AdminSidebar({children}) {
                             <div className="hidden group-hover:block">
                                 <p className="text-[14px] text-blue-100 mb-4 opacity-80">Contact CSR Support for issues.</p>
                                 <button
-                                onClick={()=> router.push('/contactus')}
-                                className="w-full bg-[#F9F3DF] text-[#C2A01E] py-2 rounded-2xl text-[16px] font-medium hover:bg-[#f7ebc4] transition-colors">Contact Us &gt;</button>
+                                    onClick={() => router.push('/contactus')}
+                                    className="w-full bg-[#F9F3DF] text-[#C2A01E] py-2 rounded-2xl text-[16px] font-medium hover:bg-[#f7ebc4] transition-colors">Contact Us &gt;</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </aside>
 
-            {/* 3. The Main Content Container - Crucial for showing content next to sidebar */}
             <main className="flex-1 flex flex-col overflow-hidden relative">
-                {/* {renderContent()} */}
                 {children}
             </main>
         </div>

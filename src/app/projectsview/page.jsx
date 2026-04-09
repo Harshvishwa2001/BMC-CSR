@@ -67,7 +67,7 @@ export default function page() {
                                                 <td className="px-8 py-4">
                                                     <div className="flex flex-col gap-2">
 
-                                                        <span className="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                                        <span className="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
                                                             {project.name}
                                                         </span>
                                                     </div>

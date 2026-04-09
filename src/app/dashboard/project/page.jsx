@@ -1,4 +1,5 @@
 'use client'
+import AdminHeader from '@/components/AdminHeader';
 import Sidebar from '@/components/Sidebar';
 import { BellDot, CheckCircle, ChevronDown, ChevronLeft, CircleCheckBig, FileText, IndianRupee, MapPin, Search, Tag } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -12,46 +13,7 @@ export default function CSRProject() {
 
             <main className="flex-1 flex flex-col h-full overflow-hidden transition-all duration-300">
                 {/* Header */}
-                <header className='flex justify-between items-center px-8 py-4 bg-white border-b border-slate-200 sticky top-0 z-40 h-20'>
-
-                    {/* Left Section: Welcome Message */}
-                    <div onClick={()=> router.push('/dashboard') } className='bg-[#F9FAFB] flex items-center justify-center text-[16px] border border-[#E5E7EB] text-[#7B7B7B] py-2 px-2.5 rounded-full gap-2 cursor-pointer'>
-                        <ChevronLeft size={20} />Go Back
-                    </div>
-
-                    {/* Right Section: Actions & Profile */}
-                    <div className='flex items-center gap-4 md:gap-6'>
-                        {/* Search & Notifications */}
-                        <div className='flex items-center gap-1 border-r border-slate-200 pr-2 md:pr-2'>
-                            <button className='p-1 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-xl transition-all'>
-                                <Search size={20} />
-                            </button>
-                            <button className='p-1 text-slate-500 hover:bg-slate-50 hover:text-blue-600 rounded-xl transition-all relative'>
-                                <BellDot size={20} />
-                                <span className='absolute top-3 right-3 w-2 h-2 bg-red-500 rounded-full border-2 border-white'></span>
-                            </button>
-                        </div>
-
-                        {/* Profile Section */}
-                        <div className='flex items-center gap-2 cursor-pointer group/profile'>
-                            <div className='relative'>
-                                <div className='w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-blue-100 border-2 border-white'>
-                                    TS
-                                </div>
-                                <div className='absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full'></div>
-                            </div>
-
-                            <div className='text-left hidden lg:block'>
-                                <h2 className='text-sm font-bold text-[#111827] group-hover/profile:text-blue-600 transition-colors'>
-                                    Aditya Kumar
-                                </h2>
-                                <p className='text-[10px] text-[#6B7280] font-bold tracking-widest'>
-                                    Company
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </header>
+                <AdminHeader/>
 
                 {/* Page Body Content */}
                 <div className='flex-1 overflow-y-auto'>

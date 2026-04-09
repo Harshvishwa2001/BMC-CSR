@@ -1,15 +1,15 @@
+'use client'
 import React from 'react'
 import { Eye, Filter, MoreVertical, Search } from 'lucide-react'
 import AdminHead from '@/components/AdminHead';
 import AdminSidebar from '@/components/AdminSidebar';
 
 export default function page() {
-    // Mock data for the administrative dashboard
     const applications = [
-        { id: "APP-921", company: "TechCorp Solutions", project: "Education Infra", date: "02 Apr 2026", status: "Review" },
-        { id: "APP-845", company: "GreenEarth Foundation", project: "Clean Water", date: "31 Mar 2026", status: "Approved" },
-        { id: "APP-712", company: "HealthFirst NGO", project: "Mobile Clinics", date: "28 Mar 2026", status: "Pending" },
-        { id: "APP-603", company: "BlueSky Energy", project: "Solar Lighting", date: "25 Mar 2026", status: "Rejected" },
+        { compname: "TechCorp Solutions Pvt Ltd", name: "Education Infrastructure Development", status: "Under Review", date: "28 Mar 2026", color: "bg-[#FEF9C2] text-[#A65F00] border-yellow-100" },
+        { compname: "GreenEarth Industries", name: "Healthcare Initiative - Rural Areas", status: "Shortlisted", date: "25 Mar 2026", color: "bg-[#DCFCE7] text-[#008236] border-green-100" },
+        { compname: "Sunrise Enterprises", name: "Clean Water Access Program", status: "Submitted", date: "20 Mar 2026", color: "bg-[#DBEAFE] text-[#1447E6] border-blue-100" },
+        { compname: "Digital Innovations Ltd", name: "Digital Literacy Campaign", status: "Rejected", date: "15 Mar 2026", color: "bg-[#FFE2E2] text-[#C10007] border-red-100" },
     ];
 
     return (
@@ -26,95 +26,54 @@ export default function page() {
                                 <h1 className="text-2xl font-bold text-gray-900">Program Applications</h1>
                                 <p className="text-gray-500 text-sm mt-1">Review and manage incoming CSR project proposals.</p>
                             </div>
-
-                            {/* Search and Filter Actions */}
-                            <div className="flex gap-3">
-                                <div className="relative">
-                                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                                    <input
-                                        type="text"
-                                        placeholder="Search apps..."
-                                        className="pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                                    />
-                                </div>
-                                <button className="p-2 bg-white border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50">
-                                    <Filter size={20} />
-                                </button>
-                            </div>
                         </div>
 
                         {/* 3. Table and Sidebar Layout */}
-                        <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
-
-                            {/* Main Applications Table */}
-                            <div className="xl:col-span-3 bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
-                                <table className="w-full text-left">
-                                    <thead className="bg-gray-50/50 border-b border-gray-100">
-                                        <tr>
-                                            <th className="px-8 py-5 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Applicant</th>
-                                            <th className="px-8 py-5 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Project</th>
-                                            <th className="px-8 py-5 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Date</th>
-                                            <th className="px-8 py-5 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Status</th>
-                                            <th className="px-8 py-5 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-gray-50">
-                                        {applications.map((app) => (
-                                            <tr key={app.id} className="hover:bg-blue-50/30 transition-colors cursor-pointer">
-                                                <td className="px-8 py-5">
-                                                    <div className="text-sm font-bold text-gray-900">{app.company}</div>
-                                                    <div className="text-[10px] text-gray-400 font-medium">{app.id}</div>
-                                                </td>
-                                                <td className="px-8 py-5 text-sm text-gray-600 font-medium">{app.project}</td>
-                                                <td className="px-8 py-5 text-sm text-gray-500">{app.date}</td>
-                                                <td className="px-8 py-5">
-                                                    <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight ${app.status === 'Approved' ? 'bg-green-100 text-green-700' :
-                                                        app.status === 'Review' ? 'bg-blue-100 text-blue-700' :
-                                                            app.status === 'Rejected' ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-700'
-                                                        }`}>
-                                                        {app.status}
-                                                    </span>
-                                                </td>
-                                                <td className="px-8 py-5">
-                                                    <div className="flex gap-2">
-                                                        <button className="text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-colors">
-                                                            <Eye size={18} />
-                                                        </button>
-                                                        <button className="text-gray-400 hover:text-gray-600 p-2 rounded-lg transition-colors">
-                                                            <MoreVertical size={18} />
-                                                        </button>
-                                                    </div>
-                                                </td>
+                        <section>
+                            <div className="lg:col-span-2 bg-white border border-slate-200 overflow-hidden rounded-2xl shadow-sm">
+                                <div className="flex justify-between items-center border-b border-slate-50 px-4 py-6">
+                                    <h2 className="font-bold text-[20px] text-slate-800">Recent Applications</h2>
+                                    <button className="text-slate-400 text-sm hover:underline px-4">View All &gt;</button>
+                                </div>
+                                {/* Container handles the rounding and the outer border */}
+                                <div className="w-full overflow-hidden border border-slate-200 ">
+                                    <table className="w-full text-left bg-white">
+                                        <thead>
+                                            <tr className="bg-[#F9FAFB] text-[#6B7280] text-[12px] uppercase tracking-wider border-b border-slate-200">
+                                                <th className="px-6 py-4 font-medium">Company Name</th>
+                                                <th className="px-6 py-4 font-medium">Project Name</th>
+                                                <th className="px-6 py-4 font-medium">Status</th>
+                                                <th className="px-6 py-4 font-medium">Submitted Date</th>
+                                                <th className="px-6 py-4 font-medium text-center">Action</th>
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            {/* Right Side Info Cards */}
-                            <div className="xl:col-span-1 space-y-6">
-                                <div className="bg-[#0066FF] rounded-[2rem] p-8 text-white shadow-lg shadow-blue-500/20">
-                                    <h3 className="text-lg font-bold mb-2">Admin Tip</h3>
-                                    <p className="text-blue-100 text-sm leading-relaxed opacity-90">
-                                        Applications in "Review" state should be processed within 48 hours to maintain your response rating.
-                                    </p>
+                                        </thead>
+                                        <tbody className="divide-y divide-slate-200">
+                                            {applications.map((app, idx) => (
+                                                <tr
+                                                    onClick={() => router.push('/admindashboard/viewapplication')}
+                                                    key={idx} className="hover:bg-slate-50/50 transition-colors cursor-pointer">
+                                                    <td className="px-6 py-4 text-sm  text-[#111827]">{app.compname}</td>
+                                                    <td className="px-6 py-4 text-sm  text-[#111827]">{app.name}</td>
+                                                    <td className="px-6 py-2">
+                                                        <span className={`px-4 py-1 rounded-full text-[12px] font-medium border ${app.color}`}>
+                                                            {app.status}
+                                                        </span>
+                                                    </td>
+                                                    <td className="px-6 py-5 text-sm text-[#6B7280]">{app.date}</td>
+                                                    <td className="px-6 py-5">
+                                                        <button
+                                                            onClick={() => router.push('/admindashboard/viewapplication')}
+                                                            className="flex items-center gap-1 mx-auto text-[#1D4ED8] text-sm  hover:text-blue-700 cursor-pointer">
+                                                            <Eye size={16} /> View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
                                 </div>
-
-                                <div className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm">
-                                    <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-widest">Stats Overview</h3>
-                                    <div className="space-y-4">
-                                        <div className="flex justify-between items-center">
-                                            <span className="text-gray-500 text-sm font-medium">New Today</span>
-                                            <span className="text-blue-600 font-bold">12</span>
-                                        </div>
-                                        <div className="w-full bg-gray-100 h-1 rounded-full overflow-hidden">
-                                            <div className="bg-blue-600 h-full w-[65%]"></div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-
-                        </div>
+                        </section>
                     </main>
                 </div>
             </AdminSidebar>
