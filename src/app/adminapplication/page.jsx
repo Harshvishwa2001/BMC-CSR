@@ -3,8 +3,10 @@ import React from 'react'
 import { Eye, Filter, MoreVertical, Search } from 'lucide-react'
 import AdminHead from '@/components/AdminHead';
 import AdminSidebar from '@/components/AdminSidebar';
+import { useRouter } from 'next/navigation';
 
 export default function page() {
+    const router = useRouter();
     const applications = [
         { compname: "TechCorp Solutions Pvt Ltd", name: "Education Infrastructure Development", status: "Under Review", date: "28 Mar 2026", color: "bg-[#FEF9C2] text-[#A65F00] border-yellow-100" },
         { compname: "GreenEarth Industries", name: "Healthcare Initiative - Rural Areas", status: "Shortlisted", date: "25 Mar 2026", color: "bg-[#DCFCE7] text-[#008236] border-green-100" },
