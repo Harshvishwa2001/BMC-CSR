@@ -46,7 +46,7 @@ export default function Page() {
                             <div className="lg:col-span-2 overflow-hidden">
                                 <div className=" space-y-4 flex justify-between items-center border-b border-slate-50">
                                     <h2 className="font-bold text-[20px] text-slate-800">Your Applications</h2>
-                                    <button className="text-slate-400 text-sm hover:underline">View All &gt;</button>
+                                    <button className="text-slate-400 text-sm hover:underline cursor-pointer">View All &gt;</button>
                                 </div>
                                 {/* Container handles the rounding and the outer border */}
                                 <div className="w-full overflow-hidden border border-slate-200 rounded-2xl shadow-sm">
@@ -106,7 +106,7 @@ export default function Page() {
                         <div>
                             <div className='flex justify-between space-y-4'>
                                 <h1 className='text-[#111827] text-[20px] font-semibold'>Recommended CSR Projects for You</h1>
-                                <button className="text-slate-400 text-sm px-4 gap-2">View All &gt;</button>
+                                <button className="text-slate-400 text-sm px-4 gap-2 cursor-pointer">View All &gt;</button>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 <Card

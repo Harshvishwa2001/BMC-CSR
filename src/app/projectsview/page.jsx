@@ -45,7 +45,7 @@ export default function page() {
                     <div className='p-6'>
                         <div className='flex justify-between space-y-4'>
                             <h1 className='text-[#111827] text-[20px] font-semibold'>Recommended CSR Projects for You</h1>
-                            <button className="text-slate-400 text-sm px-4 gap-2">View All &gt;</button>
+                            <button className="text-slate-400 text-sm px-4 gap-2 cursor-pointer">View All &gt;</button>
                         </div>
 
                         <div className="w-full bg-white rounded-[24px] border border-gray-100 shadow-sm overflow-hidden">

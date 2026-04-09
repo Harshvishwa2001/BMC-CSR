@@ -31,7 +31,7 @@ export default function page() {
                             <div className="lg:col-span-2 bg-white border border-slate-200 overflow-hidden rounded-2xl shadow-sm">
                                 <div className="flex justify-between items-center border-b border-slate-50 px-4 py-6">
                                     <h2 className="font-bold text-[20px] text-slate-800">Recent Projects</h2>
-                                    <button className="text-slate-400 text-sm hover:underline px-4">View All &gt;</button>
+                                    <button className="text-slate-400 text-sm hover:underline px-4 cursor-pointer">View All &gt;</button>
                                 </div>
                                 {/* Container handles the rounding and the outer border */}
                                 <div className="w-full overflow-hidden border border-slate-200 ">
