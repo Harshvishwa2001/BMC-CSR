@@ -7,14 +7,36 @@ import React, { useEffect, useState } from 'react'
 export default function page() {
     const router = useRouter();
     const [isLoaded, setIsLoaded] = useState(false);
+    const [error, setError] = useState(''); // State for login errors
+    
+    // State for credentials
+    const [credentials, setCredentials] = useState({
+        email: '',
+        password: ''
+    });
 
     useEffect(() => {
         setIsLoaded(true);
     }, []);
 
-    const handleSubmit = (e)=>{
+    const handleChange = (e) => {
+        const { type, value } = e.target;
+        setError(''); // Clear error when user types
+        setCredentials(prev => ({
+            ...prev,
+            [type]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        router.push('/admindashboard')
+        
+        // Validation Logic
+        if (credentials.email === 'admin@gmail.com' && credentials.password === 'Admin@123') {
+            router.push('/admindashboard');
+        } else {
+            setError('Invalid email or password. Please try again.');
+        }
     }
 
     return (
@@ -37,6 +59,8 @@ export default function page() {
                                 <label className="text-sm font-medium text-slate-700">Email</label>
                                 <input
                                     type="email"
+                                    value={credentials.email}
+                                    onChange={handleChange}
                                     className="w-full h-12 text-sm px-4 py-2 bg-[#F7FBFF] border border-slate-200 text-slate-600 rounded-md outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-[#8897AD]"
                                     placeholder="your@company.com" required
                                 />
@@ -47,19 +71,24 @@ export default function page() {
                                 <label className="text-sm font-medium text-slate-700">Password</label>
                                 <input
                                     type="password"
+                                    value={credentials.password}
+                                    onChange={handleChange}
                                     className="w-full h-12 text-sm px-4 py-2 bg-[#F7FBFF] border border-slate-200 text-slate-600 rounded-md outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-[#8897AD]" required
                                     placeholder="Enter your password"
                                 />
-                                <p className="text-right text-sm py-2 text-[#8897AD]">Forgot Password?</p>
+                                <div className="flex justify-between items-center py-2">
+                                    {error && <p className="text-red-500 text-xs">{error}</p>}
+                                    <p className="ml-auto text-sm text-[#8897AD] cursor-pointer">Forgot Password?</p>
+                                </div>
                             </div>
 
-                            {/* Optional: Submit Button to complete the design */}
                             <button
+                                type="submit"
                                 className="flex items-center justify-center gap-2 w-full bg-[#F7FBFF] border border-blue-400 text-[#0066FF] hover:bg-blue-700 hover:text-white py-2.5 rounded-xl transition-colors">
                                 Sign In <ArrowRight size={16} className="font-bold" />
                             </button>
                         </form>
-                        <p className="text-[#0066FF] text-sm mt-6 text-center">New here? Register your company</p>
+                        <p className="text-[#0066FF] text-sm mt-6 text-center cursor-pointer">New here? Register your company</p>
                         <p className="text-[#8897AD] text-[12px] mt-4 text-center">Secure login Powered by BMC</p>
                     </div>
                 </div>
@@ -71,7 +100,7 @@ export default function page() {
                     alt="banner"
                     width={1000}
                     height={100}
-                    className={`w-2xl h-180 p-10 transition-all duration-1000 ease-out  
+                    className={`w-2xl h-180 p-10 transition-all duration-1000 ease-out   
                         ${isLoaded
                             ? 'translate-y-10 opacity-100'
                             : 'translate-y-32 opacity-0'

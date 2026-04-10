@@ -21,7 +21,7 @@ export default function AdminHeadback() {
 
     const handleSignOut = () => {
         // Clear auth tokens/session logic here
-        router.push('/login');
+        router.push('/login-admin');
     };
 
     const [isOpennot, setIsOpennot] = useState(false);
